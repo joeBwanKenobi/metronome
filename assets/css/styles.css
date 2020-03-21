@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+  margin: 5% 25% 0 25%;
+	display: block;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+svg {
+  display: block;
+  margin: 5% auto;
+	max-width: 42rem;
+	max-height: 42rem;
+	width: 70%;
+	height: 70%;
+}
+
+.controls {
+  display: block;
+  margin: 5% auto;
+}
+
+label {
+  margin-left: 26%;
+}
+
+/* -------------------
+    SVG
+----------------------*/
