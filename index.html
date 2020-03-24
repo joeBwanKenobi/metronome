@@ -1,88 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metronome</title>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.5/gsap.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/Draggable.min.js" type="text/javascript"></script>
 </head>
+
 <body>
-    <div class="container">
 
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 992.3 1293">
-            <defs>
-                <linearGradient id="linear-gradient" x1="216.07" y1="1708.42" x2="1217.94" y2="1708.42" gradientTransform="matrix(.98 0 -.18 1.68 315.65 -1168.93)" gradientUnits="userSpaceOnUse">
-                    <stop offset=".51" />
-                    <stop offset=".95" stop-color="#bfbfbf" stop-opacity=".25" />
-                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                </linearGradient>
-                <linearGradient id="linear-gradient-2" x1="350.59" y1="1068.15" x2="1014" y2="1163.27" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" />
-                    <stop offset=".04" stop-color="#100f0f" />
-                    <stop offset=".1" stop-color="#211f1f" />
-                    <stop offset=".17" stop-color="#2c2b2b" />
-                    <stop offset=".27" stop-color="#333131" />
-                    <stop offset=".56" stop-color="#353333" />
-                    <stop offset=".68" stop-color="#312f2f" stop-opacity=".95" />
-                    <stop offset=".8" stop-color="#252323" stop-opacity=".78" />
-                    <stop offset=".93" stop-color="#101010" stop-opacity=".51" />
-                    <stop offset="1" stop-opacity=".3" />
-                </linearGradient>
-                <linearGradient id="linear-gradient-3" x1="354.76" y1="903.5" x2="426.76" y2="903.5" gradientUnits="userSpaceOnUse">
-                    <stop offset=".17" stop-color="#8c5627" />
-                    <stop offset=".42" stop-color="#9f6431" stop-opacity=".63" />
-                    <stop offset=".68" stop-color="#b07139" stop-opacity=".29" />
-                    <stop offset=".89" stop-color="#bb793f" stop-opacity=".08" />
-                    <stop offset="1" stop-color="#bf7c41" stop-opacity="0" />
-                </linearGradient>
-                <linearGradient id="linear-gradient-4" x1="237.94" y1="977.12" x2="311.52" y2="982.66" xlink:href="#linear-gradient-3" />
-                <style>
-                    .cls-5 {
-                        fill: #bf7c41
-                    }
-    
-                    .cls-7 {
-                        fill: none;
-                        stroke: #f2bf80;
-                        stroke-linecap: round;
-                        stroke-miterlimit: 10;
-                        stroke-width: 7px
-                    }
-                </style>
-            </defs>
-            <g id="body">
-                <path id="base-shadow" d="M947.4 1744l-710.9-1.1c-16.4 0-23.9-1-16-2l583.4-77.9c6.6-.9 21.4-1.5 34.8-1.5l346.7.6c13.2 0 21.2.6 18.8 1.5L984.9 1742c-3 1.1-20.9 2-37.5 2z" transform="translate(-212.2 -451)" fill="url(#linear-gradient)" />
-                <path id="bg-fill" d="M763.3 1277H35.6a27.6 27.6 0 01-27.3-31.5L182.6 31.7A27.5 27.5 0 01209.9 8h354.9a27.6 27.6 0 0127.3 23.1L790.6 1245a27.6 27.6 0 01-27.3 32z" fill="#403f3e" stroke="#bf7c41" stroke-linejoin="round" stroke-width="16" />
-                <path id="shadow-overlay" d="M964 1710H277.9c-15.8 0-27.9-14.5-25.7-30.6L416.5 500c1.8-13.2 12.8-23 25.7-23h334.7a26.2 26.2 0 0125.6 22.5l187.2 1179.4c2.5 16.3-9.7 31.1-25.7 31.1z" transform="translate(-212.2 -451)" opacity=".6" fill="url(#linear-gradient-2)" />
-            </g>
-            <g id="tick-hand">
-                <rect id="hand" x="381.8" y="116" width="18.2" height="837" rx="9" fill="#f2bf80" />
-                <g id="weight">
-                    <rect class="cls-5" x="345.8" y="872" width="90" height="63" rx="8.2" />
-                    <rect x="354.8" y="881" width="72" height="45" rx="8.2" fill="url(#linear-gradient-3)" />
-                </g>
-            </g>
-            <g id="hash-marks">
-                <path class="cls-7" d="M316.3 125.5v890M315.8 126h-27M315.8 153.5h-27M315.8 181h-27M315.8 208.5h-27M315.8 236h-27M315.8 263.5h-27M315.8 291h-27M315.8 324.5h-27M315.8 358h-27M315.8 391.5h-27M315.8 425h-27M315.8 477.5h-36.5M315.8 540.5h-45.5M315.8 603.5h-46.5M311.8 666.5h-56.5M315.8 738.5h-60.5M313.8 810.5h-61.5M315.8 882.5h-77.5" />
-                <g>
-                    <path class="cls-7" d="M464.6 124.5v891M465.1 125h27M465.1 152.5h27M465.1 180h27M465.1 207.5h27M465.1 235h27M465.1 262.5h27M465.1 290h27M465.1 323.5h27M465.1 357h27M465.1 390.5h27M465.1 424h27M465.1 476.5h36.5M465.1 539.5h45.5M465.1 602.5h46.5M470.1 665.5h56.5M465.1 737.5h61.5M467.1 809.5h61.5M465.1 881.5h77.5" />
-                </g>
-                <rect class="cls-5" x="238.3" y="944.5" width="315" height="89" rx="13.5" />
-                <rect x="246.8" y="953" width="298" height="72" rx="13.5" fill="url(#linear-gradient-4)" />
-            </g>
-        </svg>
-      
-      <div class="controls">
-        <label for="bpm">BPM</label>
-        <input type="number" name='bpm' id="bpm" min='1' max='500' value='90'>
-        <input id="start" type="submit" value="Start">
-        <input id="stop" type="submit" value="Stop">
-      </div>
-    
-    </div>
+    <section class="container">
+        <div class="graphic">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 992.3 1293">
+                <defs>
+                    <linearGradient id="linear-gradient" x1="216.07" y1="1708.42" x2="1217.94" y2="1708.42"
+                        gradientTransform="matrix(.98 0 -.18 1.68 315.65 -1168.93)" gradientUnits="userSpaceOnUse">
+                        <stop offset=".51" />
+                        <stop offset=".95" stop-color="#1d1d1a" stop-opacity=".25" />
+                        <stop offset="1" stop-color="#262622" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="linear-gradient-2" x1="343.18" y1="1072.4" x2="1013.94" y2="1168.57"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" />
+                        <stop offset=".04" stop-color="#100f0f" />
+                        <stop offset=".1" stop-color="#211f1f" />
+                        <stop offset=".17" stop-color="#2c2b2b" />
+                        <stop offset=".27" stop-color="#333131" />
+                        <stop offset=".56" stop-color="#353333" />
+                        <stop offset=".68" stop-color="#312f2f" stop-opacity=".95" />
+                        <stop offset=".8" stop-color="#252323" stop-opacity=".78" />
+                        <stop offset=".93" stop-color="#101010" stop-opacity=".51" />
+                        <stop offset="1" stop-opacity=".3" />
+                    </linearGradient>
+                    <linearGradient id="linear-gradient-3" x1="354.76" y1="921.5" x2="426.76" y2="921.5"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset=".17" stop-color="#8c5627" />
+                        <stop offset=".42" stop-color="#9f6431" stop-opacity=".63" />
+                        <stop offset=".68" stop-color="#b07139" stop-opacity=".29" />
+                        <stop offset=".89" stop-color="#bb793f" stop-opacity=".08" />
+                        <stop offset="1" stop-color="#bf7c41" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="linear-gradient-4" x1="237.94" y1="977.12" x2="311.52" y2="982.66"
+                        xlink:href="#linear-gradient-3" />
+                    <style>
+                        .cls-5 {
+                            fill: #bf7c41
+                        }
 
+                        .cls-7 {
+                            fill: none;
+                            stroke: #f2bf80;
+                            stroke-linecap: round;
+                            stroke-miterlimit: 10;
+                            stroke-width: 7px
+                        }
+                    </style>
+                </defs>
+                <g id="body">
+                    <path id="base-shadow"
+                        d="M947.4 1744l-710.9-1.1c-16.4 0-23.9-1-16-2l583.4-77.9c6.6-.9 21.4-1.5 34.8-1.5l346.7.6c13.2 0 21.2.6 18.8 1.5L984.9 1742c-3 1.1-20.9 2-37.5 2z"
+                        transform="translate(-212.2 -451)" fill="url(#linear-gradient)" />
+                    <path id="bg-fill"
+                        d="M763.3 1277H35.6a27.6 27.6 0 01-27.3-31.5L182.6 31.7A27.5 27.5 0 01209.9 8h354.9a27.6 27.6 0 0127.3 23.1L790.6 1245a27.6 27.6 0 01-27.3 32z"
+                        fill="#403f3e" stroke="#bf7c41" stroke-linejoin="round" stroke-width="16" />
+                    <path id="shadow-overlay"
+                        d="M963.7 1719H269.3c-16.1 0-28.4-14.6-26.1-30.8l166.3-1188a26.5 26.5 0 0126-23.2h338.8a26.5 26.5 0 0125.9 22.6l189.4 1188.1c2.7 16.4-9.7 31.3-25.9 31.3z"
+                        transform="translate(-212.2 -451)" opacity=".6" fill="url(#linear-gradient-2)" />
+                </g>
+                <g id="hash-marks">
+                    <path class="cls-7"
+                        d="M316.3 125.5v890M315.8 126h-27M315.8 153.5h-27M315.8 181h-27M315.8 208.5h-27M315.8 236h-27M315.8 263.5h-27M315.8 291h-27M315.8 324.5h-27M315.8 358h-27M315.8 391.5h-27M315.8 425h-27M315.8 477.5h-36.5M315.8 540.5h-45.5M315.8 603.5h-46.5M311.8 666.5h-56.5M315.8 738.5h-60.5M313.8 810.5h-61.5M315.8 882.5h-77.5" />
+                    <g>
+                        <path class="cls-7"
+                            d="M464.6 124.5v891M465.1 125h27M465.1 152.5h27M465.1 180h27M465.1 207.5h27M465.1 235h27M465.1 262.5h27M465.1 290h27M465.1 323.5h27M465.1 357h27M465.1 390.5h27M465.1 424h27M465.1 476.5h36.5M465.1 539.5h45.5M465.1 602.5h46.5M470.1 665.5h56.5M465.1 737.5h61.5M467.1 809.5h61.5M465.1 881.5h77.5" />
+                    </g>
+                    <rect class="cls-5" x="238.3" y="944.5" width="315" height="89" rx="13.5" />
+                    <rect x="246.8" y="953" width="298" height="72" rx="13.5" fill="url(#linear-gradient-4)" />
+                </g>
+                <g id="tick-hand">
+                    <rect id="hand" x="381.8" y="116" width="18.2" height="837" rx="9" fill="#f2bf80" />
+                    <g id="weight">
+                        <rect class="cls-5" x="345.8" y="890" width="90" height="63" rx="8.2" />
+                        <rect x="354.8" y="899" width="72" height="45" rx="8.2" fill="url(#linear-gradient-3)" />
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="controls">
+            <div class="input">
+                <button id="decrease"><i class="fas fa-angle-left"></i></button>
+                <input type="text" name='bpm' id="bpm" min='1' max='500' value='90'>
+                <button id="increase"><i class="fas fa-angle-right"></i></button>
+            </div>
+            <div class="playControls">
+                <button id="start"><i class="fas fa-play"></i></button>
+                <button id="stop"><i class="fas fa-stop"></i></button>
+            </div>
+        </div>
+
+    </section>
     <script src="./assets/js/app.js" type="text/javascript"></script>
 </body>
+
 </html>
