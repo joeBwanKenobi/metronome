@@ -102,7 +102,7 @@ var weight = Draggable.create('#weight', {
   bounds: document.getElementById("tick-hand"),
   onDrag: function() {
     let newBpm = Math.round((met._maxBpm * percentCalc(this.minY, this.maxY, this.y)));
-    console.log(newBpm)
+    // console.log(newBpm)
     bpmInput.value = newBpm;
     met.bpm = newBpm;
   }
