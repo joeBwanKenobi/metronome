@@ -22,14 +22,12 @@ class Metronome {
     // create gsap timeline for animation
     this._animation = new gsap.timeline({
       name: 'Metronome Obj Timeline', 
-      paused:true, repeat: -1, 
-      onComplete: this.playSound,  // pass reference of playSound to onComplete callback function in gsap timeline
-      onCompleteParams: [this._sound]  // sound will need to be referenced by parent to timeline event calling onComplete - see playSound() method
+      paused:true, repeat: -1
     });
     this._animation.set(this._elem, {transformOrigin: "bottom center"});
-    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot, ease: this._easeType, onComplete: this.playSound });
+    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot, ease: this._easeType, onComplete: this.playSound, callbackScope: this});
     this._animation.to(this._elem, {duration: this._tickDur, rotation: 0, ease: this._easeType});
-    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot * -1, ease: this._easeType, onComplete: this.playSound });
+    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot * -1, ease: this._easeType, onComplete: this.playSound, callbackScope: this });
     this._animation.to(this._elem, {duration: this._tickDur, rotation: 0, ease: this._easeType});
   }
   playAnim() {
@@ -43,10 +41,9 @@ class Metronome {
     this._animation.pause();
   }
   playSound() {
-    this.parent.vars.onCompleteParams[0].volume = 1;
-    // gsap timeline callback seems to be called by a child timeline object, refer to parent for audio supplied in constructor
-    this.parent.vars.onCompleteParams[0].currentTime = 0;
-    this.parent.vars.onCompleteParams[0].play();
+    this._sound.volume = 1;
+    this._sound.currentTime = 0;
+    this._sound.play();
   }
   calcTick() {
     this._tickDur = (60 / this._bpm) / 2;
@@ -65,11 +62,11 @@ class Metronome {
     this.calcTick();
     this.stopAnim();
     // create new timeline with updated tick duration
-    this._animation = new gsap.timeline({name: 'the tl', paused:true, repeat: -1, onComplete: this.playSound, onCompleteParams: [this._sound]});
+    this._animation = new gsap.timeline({name: 'the tl', paused:true, repeat: -1});
     this._animation.set(this._elem, {transformOrigin: "bottom center"});
-    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot, ease: this._easeType, onComplete: this.playSound });
+    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot, ease: this._easeType, onComplete: this.playSound, callbackScope: this });
     this._animation.to(this._elem, {duration: this._tickDur, rotation: 0, ease: this._easeType});
-    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot * -1, ease: this._easeType, onComplete: this.playSound });
+    this._animation.to(this._elem, {duration: this._tickDur, rotation: this._rot * -1, ease: this._easeType, onComplete: this.playSound, callbackScope: this });
     this._animation.to(this._elem, {duration: this._tickDur, rotation: 0, ease: this._easeType});
   }
 
