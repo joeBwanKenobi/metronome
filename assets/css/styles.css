@@ -33,8 +33,9 @@ input[type=text] {
 	width: 4.5rem;
 	height: 5rem;
 	border-radius: 15%;
-	border:1px solid black;
-	vertical-align: middle;
+	border: 2px solid black;
+	position: relative;
+	top: 0.1rem;
 	text-align: center;
 	font-size: 2rem;
 	font-weight: bold;
@@ -43,7 +44,7 @@ input[type=text] {
 
 .container button {
 	background-color: #BF7C41;
-	border: 1px solid black;
+	border: 2px solid black;
 	border-radius: 4px;
 	text-align: center;
 	padding: 1.5rem 1.5rem;

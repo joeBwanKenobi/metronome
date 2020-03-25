@@ -1,14 +1,13 @@
 gsap.registerPlugin(Draggable);
 
-var triggerHand = document.getElementById('tick-hand');
-var triggerButton = document.getElementById('start');
+var startHand = document.getElementById('tick-hand');
+var startButton = document.getElementById('start');
 var stopButton = document.getElementById('stop');
 var bpmInput = document.getElementById('bpm');
 var incr = document.getElementById('increase');
 var decr = document.getElementById('decrease');
 var audioClip = document.createElement('audio');
-audioClip.src = 'https://www.jo3.io/assets/downloads/metronome.wav';
-
+audioClip.src = './assets/sounds/metronome.mp3';
 
 class Metronome {
   constructor(elem, startBpm = 40, sound) {
@@ -34,7 +33,6 @@ class Metronome {
     this._animation.to(this._elem, {duration: this._tickDur, rotation: 0, ease: this._easeType});
   }
   playAnim() {
-    // if (this._)
     if (this._animation.isActive()) {
       this.stopAnim();
     }
@@ -45,6 +43,7 @@ class Metronome {
     this._animation.pause();
   }
   playSound() {
+    this.parent.vars.onCompleteParams[0].volume = 1;
     // gsap timeline callback seems to be called by a child timeline object, refer to parent for audio supplied in constructor
     this.parent.vars.onCompleteParams[0].currentTime = 0;
     this.parent.vars.onCompleteParams[0].play();
@@ -78,8 +77,16 @@ class Metronome {
 
 bpmInput.addEventListener('focusout', () => met.bpm = bpmInput.value);
 bpmInput.addEventListener('change', () => met.bpm = bpmInput.value);
-triggerHand.addEventListener('click', () => met.playAnim());
-triggerButton.addEventListener('click', () => met.playAnim());
+startHand.addEventListener('click', () => {
+  audioClip.volume = 0;
+  audioClip.play();
+  met.playAnim();
+});
+startButton.addEventListener('click', () => { 
+  audioClip.volume = 0;
+  audioClip.play();
+  met.playAnim();
+});
 stopButton.addEventListener('click', () => {
   met.stopAnim();
 });
